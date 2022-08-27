@@ -117,7 +117,8 @@ class Question(models.Model):
         else:
             return False
 
-
+    def __str__(self):
+        return self.name
 #  <HINT> Create a Choice Model with:
     # Used to persist choice content for a question
     # One-To-Many (or Many-To-Many if you want to reuse choices) relationship with Question
@@ -129,6 +130,9 @@ class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, default="")
     text = models.CharField(max_length=550, null=True)
     is_correct = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
 # <HINT> The submission model
 # One enrollment could have multiple submission
 # One submission could have multiple choices
